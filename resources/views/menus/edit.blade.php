@@ -71,13 +71,13 @@
         @method('PUT')
 
         <label>Nama Menu</label>
-        <input type="text" name="name" value="{{ $menu->name }}" required>
+        <input type="text" name="name" value="{{ $menu->name }}" id="name" required>
 
         <label>Harga</label>
-        <input type="number" name="price" value="{{ $menu->price }}" required>
+        <input type="number" name="price" value="{{ $menu->price }}" id="price" required>
 
         <label>Deskripsi</label>
-        <textarea name="description">{{ $menu->description }}</textarea>
+        <textarea name="description" id="description">{{ $menu->description }}</textarea>
 
         <label>Foto Menu Saat Ini</label><br>
         <img src="{{ $menu->image ? asset('storage/'.$menu->image) : 'https://via.placeholder.com/150' }}"

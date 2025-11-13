@@ -28,8 +28,8 @@ class CrudFeatureTest extends DuskTestCase
         $browser->visit('/login')
             ->type('#email', 'admin@lilycafe.test')
             ->type('#password', 'password')
-            ->press('Log in')
-            ->assertPathIs('/dashboard');
+            ->press('@login-btn')
+            ->waitForLocation('/dashboard');
     }
 
     /** 1. LOGIN TEST */
@@ -39,7 +39,7 @@ class CrudFeatureTest extends DuskTestCase
             $browser->visit('/login')
                 ->type('#email', 'admin@lilycafe.test')
                 ->type('#password', 'password')
-                ->press('Log in')
+                ->press('@login-btn')
                 ->assertPathIs('/dashboard')
                 ->assertSee('LILY CAFE');
         });
@@ -122,6 +122,7 @@ class CrudFeatureTest extends DuskTestCase
             $browser->visit('/menus')
                 ->assertSee('Menu Hapus')
                 ->press('Hapus')
+                ->acceptDialog()
                 ->assertSee('Data berhasil dihapus')
                 ->assertDontSee('Menu Hapus');
         });

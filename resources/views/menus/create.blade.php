@@ -67,14 +67,15 @@
     <form action="{{ route('menus.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
+        
         <label>Nama Menu</label>
-        <input type="text" name="name" required>
+        <input type="text" name="name" id="name" required> {{-- Tambahkan id="name" --}}
 
         <label>Harga</label>
-        <input type="number" name="price" required>
+        <input type="number" name="price" id="price" required> {{-- Tambahkan id="price" --}}
 
         <label>Deskripsi</label>
-        <textarea name="description"></textarea>
+        <textarea name="description" id="description"></textarea> {{-- Tambahkan id="description" --}}
 
         <label>Foto Menu</label>
         <input type="file" name="image" accept="image/*">
