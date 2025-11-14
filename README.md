@@ -1,59 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Proyek Ujian CPMK03 - Lily Cafe (Laravel Dusk)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Ini adalah proyek untuk memenuhi Ujian Tengah Semester mata kuliah Uji Kualitas Perangkat Lunak (UKPL) dengan Capaian Pembelajaran (CPMK) 03. Proyek ini mengimplementasikan otomasi pengujian (browser test) menggunakan **Laravel Dusk** untuk memverifikasi fungsionalitas CRUD (Create, Read, Update, Delete) pada modul **Manajemen Menu** di aplikasi web "Lily Cafe".
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Biodata Mahasiswa
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Keterangan | Data |
+| :--- | :--- |
+| **Nama** | Natalia Nidya Fidelia |
+| **NIM** | H1D023099 |
+| **Kelas** | B |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## 3 Langkah Cepat untuk Menjalankan Proyek
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1. Setup Awal (Download & Database)
 
-## Laravel Sponsors
+1.  **Download Proyek:** Clone atau download repository ini.
+2.  **Install Dependensi:** Buka terminal dan jalankan `composer install`.
+3.  **Setup `.env`:** Salin file `.env.example` menjadi `.env`.
+    ```bash
+    copy .env.example .env
+    ```
+4.  **Buat Database:** Buat database kosong di XAMPP/Laragon (misal: `lily_cafe`).
+5.  **Edit `.env`:** Sesuaikan pengaturan database di file `.env` kamu.
+    ```env
+    DB_DATABASE=lily_cafe
+    DB_USERNAME=root
+    DB_PASSWORD=
+    ```
+6.  **Generate Key:** Jalankan `php artisan key:generate`.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 2. Migrasi & Seeding (Mengisi Data)
 
-### Premium Partners
+Ini adalah langkah kunci untuk membuat struktur database dan akun admin.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1.  **Buat Migrasi Sesi:** Jalankan ini agar tabel `sessions` dibuat (sesuai arahan).
+    ```bash
+    php artisan session:table
+    ```
+2.  **Migrasi Database:** Jalankan ini untuk membuat tabel `users`, `menus`, dan `sessions`.
+    ```bash
+    php artisan migrate
+    ```
+3.  **Seeding Akun Admin:** Jalankan ini untuk membuat akun admin (`admin@lilycafe.test` dengan password `password`), sesuai dengan file `DatabaseSeeder.php`.
+    ```bash
+    php artisan db:seed
+    ```
 
-## Contributing
+### 3. Jalankan Aplikasi & Tes
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1.  **Siapkan Aset:** Jalankan `npm install` lalu `npm run build`.
+2.  **Jalankan Server:**
+    ```bash
+    php artisan serve
+    ```
+    > Aplikasi sekarang berjalan di `http://127.0.0.1:8000`.
 
-## Code of Conduct
+3.  **Jalankan Tes Dusk:** Untuk menjalankan tes otomatisasi:
+    ```bash
+    php artisan dusk
+    ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Screenshot
+![Image width="216"](https://github.com/user-attachments/assets/d0a68a6f-15ba-49a0-a939-30785ec9a2e9)
 
-## Security Vulnerabilities
+![Image](https://github.com/user-attachments/assets/349aa2d1-676f-40cf-9c7e-708941c272bd)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+![Image](https://github.com/user-attachments/assets/2a1a9f8c-964a-499b-b142-d1c369751b4f)
